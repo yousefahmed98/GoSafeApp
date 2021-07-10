@@ -11,12 +11,14 @@
 
     <ImageView
         android:id="@+id/logoImage"
+        android:transitionName="logoImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/go_safe_logo"
         tools:ignore="ContentDescription" />
 
     <TextView
+        android:transitionName="welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello There, Welcome Back"
