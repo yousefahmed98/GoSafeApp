@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Hello There, Welcome Back"
         android:textSize="40sp"
+        android:layout_marginTop="-40dp"
         android:fontFamily="@font/bungee_inline"
         tools:ignore="HardcodedText" />
     <TextView
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Sign In to continue"
         android:textSize="20sp"
+        android:layout_marginTop="-20dp"
         android:fontFamily="@font/galada" />
     <LinearLayout
         android:layout_width="match_parent"
