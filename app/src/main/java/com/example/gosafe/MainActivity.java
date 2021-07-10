@@ -2,7 +2,9 @@ package com.example.gosafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -11,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN;
+    private static int SPLASH_SCREEN=3000;
     // variables
     Animation topAnim,bottomAnim;
     ImageView image;
@@ -31,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
 
         image.setAnimation(topAnim);
         text.setAnimation(bottomAnim);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this ,Login.class);
+                startActivity(intent);
+                finish();
+            }
+        },SPLASH_SCREEN);
+
 
     }
 }
