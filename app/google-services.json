@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "381335317590",
+    "firebase_url": "https://gosafe-b7649-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "gosafe-b7649",
+    "storage_bucket": "gosafe-b7649.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381335317590:android:09108dcfd373bf3a151ff7",
+        "android_client_info": {
+          "package_name": "com.example.gosafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381335317590-9eng96pkn4e9vvt4juiv3qodid2oud8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCrlZIyRYMbnNMK_gFTK229lY-pSkb3Qs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381335317590-9eng96pkn4e9vvt4juiv3qodid2oud8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
