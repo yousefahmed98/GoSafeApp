@@ -117,7 +117,7 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:background="@drawable/rounded_corners"
-            app:backgroundTint="#276678" />
+            app:backgroundTint="@color/logoColor" />
         <Button
             android:id="@+id/haveAccountButton"
             android:layout_width="match_parent"
@@ -126,7 +126,7 @@
             android:textSize="20sp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_corners"
-            app:backgroundTint="#276678" />
+            app:backgroundTint="@color/logoColor" />
 
     </LinearLayout>
 

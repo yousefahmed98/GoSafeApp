@@ -82,7 +82,7 @@
             android:text="Sign Up"
             android:textSize="20dp"
             android:background="@drawable/rounded_corners"
-            app:backgroundTint="#276678" />
+            app:backgroundTint="@color/logoColor" />
         <Button
             android:id="@+id/signInButton"
             android:layout_width="match_parent"
