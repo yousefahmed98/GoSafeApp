@@ -110,10 +110,13 @@
 
         <Button
             android:id="@+id/signInButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign In"
             android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corners"
             app:backgroundTint="#276678" />
         <Button
             android:id="@+id/haveAccountButton"
@@ -121,7 +124,9 @@
             android:layout_height="wrap_content"
             android:text="Already have account"
             android:textSize="20sp"
-            android:backgroundTint="#276678" />
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_corners"
+            app:backgroundTint="#276678" />
 
     </LinearLayout>
 
