@@ -42,13 +42,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/fullNameText"
+            android:id="@+id/fullName"
             android:hint="FullName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/fullNameText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
