@@ -11,25 +11,26 @@
 
     <ImageView
         android:id="@+id/logoImage"
-        android:transitionName="logoImage"
+        android:transitionName="logoImageTran"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/go_safe_logo"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:transitionName="welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:transitionName="welcomeText"
         android:text="welcome,"
         android:textSize="40sp"
         android:fontFamily="@font/bungee_inline"
         android:layout_marginTop="-50dp"
-        tools:ignore="HardcodedText" />
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up and improve your driving excperiance"
+        android:transitionName="welcomeText2"
+        android:text="Sign Up and improve your driving experience"
         android:textSize="20sp"
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/galada" />
@@ -37,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -44,12 +46,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/fullName"
             android:hint="FullName"
+            android:transitionName="usernameTran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/fullNameText"/>
+                android:id="@+id/fullNameText"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,6 +62,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/username"
             android:hint="Username"
+            android:transitionName="usernameTran"
+            app:counterMaxLength="15"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -71,11 +77,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/EmailText"
             android:hint="Email"
+            android:transitionName="usernameTran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,11 +92,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/PhoneNumber"
             android:hint="Phone Number"
+            android:transitionName="passwordTran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,24 +109,27 @@
             android:hint="Password"
             android:layout_marginTop="5dp"
             app:passwordToggleEnabled="true"
-
+            android:transitionName="passwordTran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/signInButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign In"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_corners"
+            android:text="Sign up"
+            android:textSize="20dp"
+            android:transitionName="signTran"
             app:backgroundTint="@color/logoColor" />
         <Button
             android:id="@+id/haveAccountButton"
@@ -125,8 +138,8 @@
             android:text="Already have account"
             android:textSize="20sp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/rounded_corners"
-            app:backgroundTint="@color/logoColor" />
+            android:background="#00000000"
+            android:transitionName="signTran2"/>
 
     </LinearLayout>
 

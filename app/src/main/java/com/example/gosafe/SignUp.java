@@ -31,11 +31,12 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_up);
 
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         //Hooks
+        /*
         regFullName = findViewById(R.id.fullNameText);
         regUserName = findViewById(R.id.username);
         regEmail = findViewById(R.id.EmailText);
@@ -44,6 +45,7 @@ public class SignUp extends AppCompatActivity {
         signUpBtn = findViewById(R.id.signUpButton);
         haveAccBtn = findViewById(R.id.haveAccountButton);
 
+        signUpBtn = findViewById(R.id.signUpButton);
         //save data in firebase
         signUpBtn.setOnClickListener(new View.OnClickListener(){
 
@@ -94,7 +96,7 @@ public class SignUp extends AppCompatActivity {
                             }
                         });
             }
-        });
+        });*/
 
     }
 }
