@@ -76,18 +76,19 @@
             android:layout_gravity="right"/>
 
         <Button
-            android:id="@+id/signUpButton"
+            android:id="@+id/signInButton"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="Sign IN"
             android:textSize="20dp"
             android:background="@drawable/rounded_corners"
             app:backgroundTint="@color/logoColor" />
         <Button
-            android:id="@+id/signInButton"
+            android:id="@+id/signUpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="sign in"
+            android:text="sign up"
             android:elevation="0dp"
             android:textSize="20sp"
             android:background="#00000000" />
