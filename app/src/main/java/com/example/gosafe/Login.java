@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
     //Variables
@@ -20,6 +21,7 @@ public class Login extends AppCompatActivity {
     ImageView image;
     TextView welcomeText , welcomeText2;
     TextInputLayout username , password;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,14 @@ public class Login extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+
+            }
+        });
+
+        loginBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
 
             }
         });
