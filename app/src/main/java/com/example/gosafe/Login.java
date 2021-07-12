@@ -20,6 +20,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
@@ -28,8 +31,9 @@ public class Login extends AppCompatActivity {
     ImageView image;
     TextView welcomeText , welcomeText2;
     TextInputLayout logEmail, logPassword;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    FirebaseUser fUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +95,21 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull  Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Login.this,"Sign In Successfully",Toast.LENGTH_SHORT).show();
-                            fAuth.getCurrentUser().getUid();
+                            String userID =fAuth.getCurrentUser().getUid();
+                            DocumentReference reference = fStore.collection("users").document(userID);
+                            reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull  Task<DocumentSnapshot> task) {
+                                    String userType = task.getResult().getString("type");
+                                    if(userType.equals("admin")){
+                                        Intent intent = new Intent(Login.this,adminDashboard.class);
+                                        startActivity(intent);
+
+                                    }
+                                }
+                            });
+
+
                         }
                         else{
                             Toast.makeText(Login.this,"Sign In fail"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();

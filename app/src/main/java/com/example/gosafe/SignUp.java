@@ -90,14 +90,13 @@ public class SignUp extends AppCompatActivity {
                 User user = new User(fullName, userName, email, phoneNo, password);
                 String id = makeUserID(user);
                 saveToFireStore(id,user);
-
+                fAuth.signOut();
 
             }
         });
     }
     private void saveToFireStore(String id, User user){
         Map<String, Object> newUser = new HashMap<>();
-        newUser.put("id",id);
         newUser.put("fullName",user.fullName);
         newUser.put("userName",user.userName);
         newUser.put("email",user.email);
@@ -119,7 +118,6 @@ public class SignUp extends AppCompatActivity {
 
                 }
         });
-
     }
     private String makeUserID(User user){
         String id;
@@ -129,16 +127,6 @@ public class SignUp extends AppCompatActivity {
         return id;
     }
     private void makeUserAcc(User user){
-        fAuth.createUserWithEmailAndPassword(user.email,user.password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull  Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    return;
-                }
-                else{
-                    Toast.makeText(SignUp.this,"Sign Up Failed"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        fAuth.createUserWithEmailAndPassword(user.email,user.password);
     }
 }
