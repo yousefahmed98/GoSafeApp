@@ -1,18 +1,25 @@
 package com.example.gosafe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
@@ -20,8 +27,9 @@ public class Login extends AppCompatActivity {
     Button signUpBtn,loginBtn;
     ImageView image;
     TextView welcomeText , welcomeText2;
-    TextInputLayout username , password;
+    TextInputLayout logEmail, logPassword;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +39,8 @@ public class Login extends AppCompatActivity {
         image = findViewById(R.id.logoImage);
         welcomeText = findViewById(R.id.welcomeText);
         welcomeText2 = findViewById(R.id.welcomeText2);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        logEmail = findViewById(R.id.email);
+        logPassword = findViewById(R.id.password);
         signUpBtn = findViewById(R.id.signUpButton);
         loginBtn = findViewById(R.id.signInButton);
 
@@ -46,8 +54,8 @@ public class Login extends AppCompatActivity {
                 pairs[0] = new Pair<View,String>(image,"logoImageTran");
                 pairs[1] = new Pair<View,String>(welcomeText,"welcomeText");
                 pairs[2] = new Pair<View,String>(welcomeText2,"welcomeText2");
-                pairs[3] = new Pair<View,String>(username,"usernameTran");
-                pairs[4] = new Pair<View,String>(password,"passwordTran");
+                pairs[3] = new Pair<View,String>(logEmail,"emailTran");
+                pairs[4] = new Pair<View,String>(logPassword,"passwordTran");
                 pairs[5] = new Pair<View,String>(loginBtn,"signTran");
                 pairs[6] = new Pair<View,String>(signUpBtn,"signTran2");
 
@@ -67,7 +75,29 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                String username = logEmail.getEditText().getText().toString();
+                String password = logPassword.getEditText().getText().toString();
 
+                if(TextUtils.isEmpty(username)){
+                    logEmail.setError("username is Required.");
+                    return;
+                }
+                if(TextUtils.isEmpty(password)){
+                    logPassword.setError("password is Required.");
+                    return;
+                }
+                fAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull  Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Login.this,"Sign In Successfully",Toast.LENGTH_SHORT).show();
+                            fAuth.getCurrentUser().getUid();
+                        }
+                        else{
+                            Toast.makeText(Login.this,"Sign In fail"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }
