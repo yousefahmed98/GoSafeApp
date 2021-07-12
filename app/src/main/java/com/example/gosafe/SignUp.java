@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -87,8 +88,7 @@ public class SignUp extends AppCompatActivity {
                 }
 
                 User user = new User(fullName, userName, email, phoneNo, password);
-                String id = UUID.randomUUID().toString();
-                // Add a new document with a generated ID
+                String id = makeUserID(user);
                 saveToFireStore(id,user);
 
 
@@ -120,5 +120,25 @@ public class SignUp extends AppCompatActivity {
                 }
         });
 
+    }
+    private String makeUserID(User user){
+        String id;
+        makeUserAcc(user);
+        fAuth.signInWithEmailAndPassword(user.email,user.password);
+        id = fAuth.getCurrentUser().getUid();
+        return id;
+    }
+    private void makeUserAcc(User user){
+        fAuth.createUserWithEmailAndPassword(user.email,user.password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull  Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    return;
+                }
+                else{
+                    Toast.makeText(SignUp.this,"Sign Up Failed"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

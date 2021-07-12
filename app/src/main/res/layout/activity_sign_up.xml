@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/fullName"
             android:hint="FullName"
-            android:transitionName="usernameTran"
+            android:transitionName="emailTran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/username"
             android:hint="Username"
-            android:transitionName="usernameTran"
+            android:transitionName="emailTran"
             app:counterMaxLength="15"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/Email"
             android:hint="Email"
-            android:transitionName="usernameTran"
+            android:transitionName="emailTran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
