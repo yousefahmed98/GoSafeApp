@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blur_background"
-    tools:context=".adminDashboard">
+    tools:context=".AdminDashboard">
 
     <ImageView
         android:id="@+id/logoImage"
@@ -64,7 +64,7 @@
                     app:srcCompat="@drawable/warning_pothole" />
 
                 <Button
-                    android:id="@+id/issuesBtn"
+                    android:id="@+id/defectsBtn"
                     android:layout_width="175dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/issueImage"
@@ -80,7 +80,7 @@
                     android:layout_marginRight="1dp"
                     android:background="#00000000"
                     android:fontFamily="@font/bungee_inline"
-                    android:text="Issues"
+                    android:text="defects"
                     android:textSize="15dp" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -174,7 +174,7 @@
                     android:layout_marginRight="1dp"
                     android:background="#00000000"
                     android:fontFamily="@font/bungee_inline"
-                    android:text="Issues loc"
+                    android:text="defects loc"
                     android:textSize="15dp" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

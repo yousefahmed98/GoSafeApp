@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity {
                                 public void onComplete(@NonNull  Task<DocumentSnapshot> task) {
                                     String userType = task.getResult().getString("type");
                                     if(userType.equals("admin")){
-                                        Intent intent = new Intent(Login.this,adminDashboard.class);
+                                        Intent intent = new Intent(Login.this, AdminDashboard.class);
                                         startActivity(intent);
 
                                     }
