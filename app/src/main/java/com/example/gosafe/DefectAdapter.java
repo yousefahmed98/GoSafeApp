@@ -40,7 +40,7 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
         holder.type.setText(defectsList.get(position).getType());
         holder.loc.setText(defectsList.get(position).getLoc());
         String imgURL = defectsList.get(position).getImageUrl();
-        Picasso.get() .load(imgURL) .resize(50, 50) .centerCrop() .into(holder.defectImg);
+        Picasso.get() .load(imgURL).into(holder.defectImg);
 
 
 
