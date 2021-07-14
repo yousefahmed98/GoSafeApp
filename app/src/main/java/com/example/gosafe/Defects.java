@@ -2,6 +2,7 @@ package com.example.gosafe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,9 @@ public class Defects extends AppCompatActivity {
         list = new ArrayList<>();
         adapter = new DefectAdapter(this,list);
         recyclerView.setAdapter(adapter);
+
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
+        touchHelper.attachToRecyclerView(recyclerView);
         showData();
     }
 
