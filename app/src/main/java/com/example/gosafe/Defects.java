@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,7 +56,7 @@ public class Defects extends AppCompatActivity {
                     String type = snapshot.getString("type");
                     GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
                     double lat = locGeo.getLatitude();
-                    double lng = locGeo.getLatitude();
+                    double lng = locGeo.getLongitude();
                     String location = String.valueOf(lat) + "," + String.valueOf(lng);
                     String imgUrl =  snapshot.getString("imgUrl");
                     Defect defect = new Defect( id , type , location ,imgUrl);
@@ -71,4 +72,5 @@ public class Defects extends AppCompatActivity {
             }
         });
     }
+
 }

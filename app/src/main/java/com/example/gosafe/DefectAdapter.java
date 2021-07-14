@@ -34,7 +34,7 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
     }
     public void deleteDefect(int position){
         Defect defect = defectsList.get(position);
-       fStore.collection("issues").document(defect.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+        fStore.collection("issues").document(defect.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
            @Override
            public void onComplete(@NonNull  Task<Void> task) {
             if(task.isSuccessful()){
@@ -45,7 +45,24 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
                 Toast.makeText(defects,"error "+ task.getException().getMessage() ,Toast.LENGTH_SHORT).show();
             }
            }
-       });
+        });
+    }
+
+    public void fixDefect(int position){
+        Defect defect = defectsList.get(position);
+        fStore.collection("fixed").document(defect.getId()).set(defect).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull  Task<Void> task) {
+                if(task.isSuccessful()){
+                    deleteDefect(position);
+                    notifyRemoved(position);
+                    Toast.makeText(defects,"defect fixed" ,Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(defects,"error "+ task.getException().getMessage() ,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
     private void notifyRemoved(int postiton){
         defectsList.remove(postiton);
