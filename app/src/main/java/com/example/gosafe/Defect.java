@@ -4,10 +4,10 @@ import com.google.firebase.firestore.GeoPoint;
 
 public class Defect {
     String id,type;
-    String loc;
+    GeoPoint loc;
     String imageUrl;
 
-    public Defect(String id, String type, String loc,String imageUrl) {
+    public Defect(String id, String type, GeoPoint loc,String imageUrl) {
         this.id = id;
         this.type = type;
         this.loc = loc;
@@ -34,11 +34,11 @@ public class Defect {
         this.type = type;
     }
 
-    public String getLoc() {
+    public GeoPoint getLoc() {
         return loc;
     }
 
-    public void setLoc(String loc) {
+    public void setLoc(GeoPoint loc) {
         this.loc = loc;
     }
 

@@ -55,11 +55,8 @@ public class Defects extends AppCompatActivity {
                     String id = snapshot.getString("id");
                     String type = snapshot.getString("type");
                     GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
-                    double lat = locGeo.getLatitude();
-                    double lng = locGeo.getLongitude();
-                    String location = String.valueOf(lat) + "," + String.valueOf(lng);
                     String imgUrl =  snapshot.getString("imgUrl");
-                    Defect defect = new Defect( id , type , location ,imgUrl);
+                    Defect defect = new Defect( id , type , locGeo ,imgUrl);
                     list.add(defect);
                 }
                 adapter.notifyDataSetChanged();
