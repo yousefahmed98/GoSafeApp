@@ -44,7 +44,7 @@ public class Defects extends AppCompatActivity {
         showData();
     }
 
-    private void showData(){
+    public void showData(){
 
         fStore.collection("issues").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
