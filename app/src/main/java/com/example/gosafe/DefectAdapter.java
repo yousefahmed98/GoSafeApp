@@ -63,9 +63,10 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
         double lng = defect.getLoc().getLongitude();
         bundle.putString("lat" , String.valueOf(lat));
         bundle.putString("lng" , String.valueOf(lng));
-        // Intent intent = new Intent(defects,MapView.class);
-        //defects.startActivity(intent);
-
+        Intent intent = new Intent(defects,DefectMapsActivity.class);
+        intent.putExtras(bundle);
+        defects.startActivity(intent);
+        defects.showData();
     }
     public void fixDefect(int position){
         Defect defect = defectsList.get(position);
