@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@drawable/blur_background"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:transitionName="logoImageTran"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/go_safe_logo"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@id/welcomeText"
+        android:transitionName="welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello There, Welcome Back"
+        android:textSize="40sp"
+        android:layout_marginTop="-40dp"
+        android:fontFamily="@font/bungee_inline"
+        />
+    <TextView
+        android:id="@+id/welcomeText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In to continue"
+        android:textSize="20sp"
+        android:layout_marginTop="-20dp"
+        android:fontFamily="@font/galada"
+        android:transitionName="welcomeText2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:hint="Email"
+            android:transitionName="emailTran"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:hint="Password"
+            android:layout_marginTop="5dp"
+            android:transitionName="passwordTran"
+            app:passwordToggleEnabled="true"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/forgetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget Password"
+            android:background="#00000000"
+            android:textColor="@color/black"
+            android:layout_gravity="right"/>
+
+        <Button
+            android:id="@+id/signInButton"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign IN"
+            android:textSize="20dp"
+            android:transitionName="signTran"
+            android:background="@drawable/rounded_corners"
+            app:backgroundTint="@color/logoColor"
+            />
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sign up"
+            android:elevation="0dp"
+            android:textSize="20sp"
+            android:background="#00000000"
+            android:transitionName="signTran2"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

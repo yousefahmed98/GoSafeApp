@@ -2,7 +2,12 @@ package com.example.gosafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Pair;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -11,7 +16,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN;
+    private static int SPLASH_SCREEN=3000;
     // variables
     Animation topAnim,bottomAnim;
     ImageView image;
@@ -26,11 +31,30 @@ public class MainActivity extends AppCompatActivity {
         bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
         //Hooks
-        image= findViewById(R.id.imageView);
-        text= findViewById(R.id.textView);
+        image= findViewById(R.id.logoImage);
+        text= findViewById(R.id.welcomeText);
 
         image.setAnimation(topAnim);
         text.setAnimation(bottomAnim);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this ,Login.class);
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View,String>(image,"logoImage");
+                pairs[1] = new Pair<View,String>(text,"welcomeText");
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+                    startActivity(intent,options.toBundle());
+                    finish();
+                }
+                else {
+                    startActivity(intent);
+                }
+            }
+        },SPLASH_SCREEN);
+
 
     }
 }
