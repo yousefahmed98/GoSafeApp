@@ -34,7 +34,7 @@ public class DefectMapsActivity extends FragmentActivity implements OnMapReadyCa
         mapFragment.getMapAsync(this);
 
 
-        String id,type,imageUrl,lat,lng;
+        String id,type,imageUrl,lat,lng,city,governorate;
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
              id = bundle.getString("id");
@@ -42,6 +42,8 @@ public class DefectMapsActivity extends FragmentActivity implements OnMapReadyCa
              imageUrl = bundle.getString("imageUrl");
              lat = bundle.getString("lat");
              lng = bundle.getString("lng");
+             city = bundle.getString("city");
+             governorate = bundle.getString("governorate");
         }
     }
 

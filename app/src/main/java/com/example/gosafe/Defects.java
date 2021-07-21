@@ -27,11 +27,17 @@ public class Defects extends AppCompatActivity {
     private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     private DefectAdapter adapter;
     private List<Defect> list;
+    private String city , governorate ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_defects);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            city = bundle.getString("city");
+            governorate = bundle.getString("governorate");
+        }
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -42,12 +48,13 @@ public class Defects extends AppCompatActivity {
 
         ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
         touchHelper.attachToRecyclerView(recyclerView);
-        showData();
+        showData(city);
     }
 
-    public void showData(){
+    public void showData(String city){
 
-        fStore.collection("areas").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        fStore.collection("areas").document(governorate).collection("cities").document(city).collection("defects")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 list.clear();
@@ -56,8 +63,8 @@ public class Defects extends AppCompatActivity {
                     String type = snapshot.getString("type");
                     GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
                     String imgUrl =  snapshot.getString("imgUrl");
-                    String governorate =  snapshot.getString("imgUrl");
-                    String city =  snapshot.getString("imgUrl");
+                    String governorate =  snapshot.getString("governorate");
+                    String city =  snapshot.getString("city");
                     Defect defect = new Defect( id , type , locGeo , imgUrl , governorate , city );
                     list.add(defect);
                 }

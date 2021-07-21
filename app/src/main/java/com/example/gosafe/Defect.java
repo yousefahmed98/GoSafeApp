@@ -52,4 +52,20 @@ public class Defect {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getGovernorate() {
+        return governorate;
+    }
+
+    public void setGovernorate(String governorate) {
+        this.governorate = governorate;
+    }
 }

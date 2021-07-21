@@ -59,6 +59,8 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
         bundle.putString("id" , defect.getId());
         bundle.putString("type" , defect.getType());
         bundle.putString("imageUrl" , defect.getImageUrl());
+        bundle.putString("governorate" , defect.getGovernorate());
+        bundle.putString("city" , defect.getCity());
         double lat = defect.getLoc().getLatitude();
         double lng = defect.getLoc().getLongitude();
         bundle.putString("lat" , String.valueOf(lat));
@@ -66,8 +68,9 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
         Intent intent = new Intent(defects,DefectMapsActivity.class);
         intent.putExtras(bundle);
         defects.startActivity(intent);
-        defects.showData();
+        defects.showData(defect.getCity());
     }
+
     public void fixDefect(int position){
         Defect defect = defectsList.get(position);
         fStore.collection("fixed").document(defect.getId()).set(defect).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -84,11 +87,12 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
             }
         });
     }
-    private void notifyRemoved(int postiton){
-        defectsList.remove(postiton);
-        notifyItemRemoved(postiton);
-        defects.showData();
 
+    private void notifyRemoved(int position){
+        String city = defectsList.get(position).getCity();
+        defectsList.remove(position);
+        notifyItemRemoved(position);
+        defects.showData(city);
     }
     @NonNull
     @Override
@@ -118,7 +122,7 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
 
-        TextView type , loc, imageUrl;
+        TextView type , loc;
         ImageView defectImg;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
