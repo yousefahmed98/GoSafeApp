@@ -47,7 +47,7 @@ public class Defects extends AppCompatActivity {
 
     public void showData(){
 
-        fStore.collection("issues").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        fStore.collection("areas").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 list.clear();
@@ -56,7 +56,9 @@ public class Defects extends AppCompatActivity {
                     String type = snapshot.getString("type");
                     GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
                     String imgUrl =  snapshot.getString("imgUrl");
-                    Defect defect = new Defect( id , type , locGeo ,imgUrl);
+                    String governorate =  snapshot.getString("imgUrl");
+                    String city =  snapshot.getString("imgUrl");
+                    Defect defect = new Defect( id , type , locGeo , imgUrl , governorate , city );
                     list.add(defect);
                 }
                 adapter.notifyDataSetChanged();

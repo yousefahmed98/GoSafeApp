@@ -18,7 +18,7 @@ public class AdminDashboard extends AppCompatActivity {
         defectsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminDashboard.this, Defects.class);
+                Intent intent = new Intent(AdminDashboard.this, Areas.class);
                 startActivity(intent);
             }
         });

@@ -5,13 +5,16 @@ import com.google.firebase.firestore.GeoPoint;
 public class Defect {
     String id,type;
     GeoPoint loc;
-    String imageUrl;
+    String imageUrl , city , governorate;
 
-    public Defect(String id, String type, GeoPoint loc,String imageUrl) {
+
+    public Defect(String id, String type, GeoPoint loc,String imageUrl,String governorate, String city) {
         this.id = id;
         this.type = type;
         this.loc = loc;
         this.imageUrl = imageUrl;
+        this.governorate = governorate;
+        this.city = city;
 
     }
 
