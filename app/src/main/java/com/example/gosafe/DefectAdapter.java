@@ -39,7 +39,8 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
     }
     public void deleteDefect(int position){
         Defect defect = defectsList.get(position);
-        fStore.collection("issues").document(defect.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+        fStore.collection("areas").document(defect.getGovernorate()).collection("cities").document(defect.getCity()).collection("defects")
+                .document(defect.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
            @Override
            public void onComplete(@NonNull  Task<Void> task) {
             if(task.isSuccessful()){
