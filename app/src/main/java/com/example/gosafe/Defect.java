@@ -4,14 +4,17 @@ import com.google.firebase.firestore.GeoPoint;
 
 public class Defect {
     String id,type;
-    String loc;
-    String imageUrl;
+    GeoPoint loc;
+    String imageUrl , city , governorate;
 
-    public Defect(String id, String type, String loc,String imageUrl) {
+
+    public Defect(String id, String type, GeoPoint loc,String imageUrl,String governorate, String city) {
         this.id = id;
         this.type = type;
         this.loc = loc;
         this.imageUrl = imageUrl;
+        this.governorate = governorate;
+        this.city = city;
 
     }
 
@@ -34,11 +37,11 @@ public class Defect {
         this.type = type;
     }
 
-    public String getLoc() {
+    public GeoPoint getLoc() {
         return loc;
     }
 
-    public void setLoc(String loc) {
+    public void setLoc(GeoPoint loc) {
         this.loc = loc;
     }
 
@@ -48,5 +51,21 @@ public class Defect {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getGovernorate() {
+        return governorate;
+    }
+
+    public void setGovernorate(String governorate) {
+        this.governorate = governorate;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.gosafe;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -16,8 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -34,7 +39,8 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
     }
     public void deleteDefect(int position){
         Defect defect = defectsList.get(position);
-        fStore.collection("issues").document(defect.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+        fStore.collection("areas").document(defect.getGovernorate()).collection("cities").document(defect.getCity()).collection("defects")
+                .document(defect.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
            @Override
            public void onComplete(@NonNull  Task<Void> task) {
             if(task.isSuccessful()){
@@ -46,6 +52,24 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
             }
            }
         });
+    }
+
+    public void defectLoc(int position){
+        Defect defect = defectsList.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putString("id" , defect.getId());
+        bundle.putString("type" , defect.getType());
+        bundle.putString("imageUrl" , defect.getImageUrl());
+        bundle.putString("governorate" , defect.getGovernorate());
+        bundle.putString("city" , defect.getCity());
+        double lat = defect.getLoc().getLatitude();
+        double lng = defect.getLoc().getLongitude();
+        bundle.putString("lat" , String.valueOf(lat));
+        bundle.putString("lng" , String.valueOf(lng));
+        Intent intent = new Intent(defects,DefectMapsActivity.class);
+        intent.putExtras(bundle);
+        defects.startActivity(intent);
+        defects.showData(defect.getCity());
     }
 
     public void fixDefect(int position){
@@ -64,11 +88,12 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
             }
         });
     }
-    private void notifyRemoved(int postiton){
-        defectsList.remove(postiton);
-        notifyItemRemoved(postiton);
-        defects.showData();
 
+    private void notifyRemoved(int position){
+        String city = defectsList.get(position).getCity();
+        defectsList.remove(position);
+        notifyItemRemoved(position);
+        defects.showData(city);
     }
     @NonNull
     @Override
@@ -80,7 +105,11 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.type.setText(defectsList.get(position).getType());
-        holder.loc.setText(defectsList.get(position).getLoc());
+        GeoPoint locGeo = defectsList.get(position).getLoc();
+        double lat = locGeo.getLatitude();
+        double lng = locGeo.getLongitude();
+        String location = String.valueOf(lat) + "," + String.valueOf(lng);
+        holder.loc.setText(location);
         String imgURL = defectsList.get(position).getImageUrl();
         Picasso.get() .load(imgURL).into(holder.defectImg);
 
@@ -94,13 +123,12 @@ public class DefectAdapter extends RecyclerView.Adapter<DefectAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
 
-        TextView type , loc, imageUrl;
+        TextView type , loc;
         ImageView defectImg;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             type = itemView.findViewById(R.id.typeText);
             loc = itemView.findViewById(R.id.locationText);
-            //imageUrl = itemView.findViewById(R.id.imageUrlText);
             defectImg = itemView.findViewById(R.id.imageView);
 
         }

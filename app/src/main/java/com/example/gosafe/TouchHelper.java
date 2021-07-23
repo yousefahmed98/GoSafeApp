@@ -15,7 +15,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
     private DefectAdapter adapter;
     public TouchHelper(DefectAdapter adapter) {
-        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT );
         this.adapter = adapter;
     }
 
@@ -31,15 +31,10 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
             adapter.deleteDefect(position);
         }
         if(direction == ItemTouchHelper.RIGHT){
-            adapter.fixDefect(position);
+            adapter.defectLoc(position);
         }
     }
 
-    @Override
-    public boolean isLongPressDragEnabled() {
-        System.out.println("test");
-        return super.isLongPressDragEnabled();
-    }
 
     @Override
     public void onChildDraw(@NonNull  Canvas c, @NonNull  RecyclerView recyclerView, @NonNull  RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
@@ -48,7 +43,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
                 .addSwipeLeftBackgroundColor(Color.RED)
                 .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                 .addSwipeRightBackgroundColor(R.color.logoColor)
-                .addSwipeRightActionIcon(R.drawable.ic_baseline_done_all_24)
+                .addSwipeRightActionIcon(R.drawable.ic_baseline_location_on_24)
                 .create()
                 .decorate();
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
