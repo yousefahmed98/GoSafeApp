@@ -215,7 +215,7 @@
                     android:layout_marginRight="1dp"
                     android:background="#00000000"
                     android:fontFamily="@font/bungee_inline"
-                    android:text="comingSoon"
+                    android:text="coming Soon"
                     android:textSize="15dp" />
             </RelativeLayout>
 

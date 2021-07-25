@@ -77,9 +77,17 @@ public class Areas extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putString("city" , city);
                     bundle.putString("governorate" , governorate);
-                    Intent intent = new Intent(Areas.this,Defects.class);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    if(getIntent().getStringExtra("from").equals("defects")){
+                        Intent intent = new Intent(Areas.this,Defects.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(Areas.this,Analysis.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+
 
                 }
 
