@@ -69,15 +69,10 @@ public class DefectMapsActivity extends FragmentActivity implements OnMapReadyCa
         imageUrl = bundle.getString("imageUrl");
         lat = bundle.getString("lat");
         lng = bundle.getString("lng");
-        //Picasso.get() .load(imageUrl).into((Target) DefectMapsActivity.this);
-        ///typeText.setText(type);
-        //String location = lat + "," + lng;
-        //locationText.setText(location);a
         Picasso.get() .load(imageUrl).into(defectImg);
-        // Add a marker in Sydney and move the camera
 
-        LatLng sydney = new LatLng(Float.parseFloat(lat),Float.parseFloat(lng));
-        mMap.addMarker(new MarkerOptions().position(sydney).title(type));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng defect = new LatLng(Float.parseFloat(lat),Float.parseFloat(lng));
+        mMap.addMarker(new MarkerOptions().position(defect).title(type));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(defect));
     }
 }
