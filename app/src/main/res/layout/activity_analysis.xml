@@ -50,7 +50,7 @@
         android:id="@+id/secLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/firstLayout"
@@ -69,6 +69,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Number Of Defects"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numPotholeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Potholes"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numAlligatorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Alligators"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numTransverseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Transverses"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numLongitudinalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Longitudinal"
             android:textSize="20sp"
             android:fontFamily="@font/galada"
             />
