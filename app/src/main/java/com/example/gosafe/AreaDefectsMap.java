@@ -40,35 +40,36 @@ public class AreaDefectsMap extends FragmentActivity implements OnMapReadyCallba
 
         binding = ActivityAreaDefectsMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        list = new ArrayList<>();
-        fStore.collection("areas").document(governorate).collection("cities").document(city).collection("defects")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                list.clear();
-                for(DocumentSnapshot snapshot :task.getResult()){
-                    String id = snapshot.getString("id");
-                    String type = snapshot.getString("type");
-                    GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
-                    String imgUrl =  snapshot.getString("imgUrl");
-                    String governorate =  snapshot.getString("governorate");
-                    String city =  snapshot.getString("city");
-                    Defect defect = new Defect( id , type , locGeo , imgUrl , governorate , city );
-                    list.add(defect);
-                }
-
-            }
-        });
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
             city = bundle.getString("city");
             governorate = bundle.getString("governorate");
         }
+        list = new ArrayList<>();
+        list.clear();
+        fStore.collection("areas").document(governorate).collection("cities").document(city).collection("defects").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull  Task<QuerySnapshot> task) {
+                        for(DocumentSnapshot snapshot :task.getResult()){
+                            String id = snapshot.getString("id");
+                            String type = snapshot.getString("type");
+                            GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
+                            String imgUrl =  snapshot.getString("imgUrl");
+                            String governorate =  snapshot.getString("governorate");
+                            String city =  snapshot.getString("city");
+                            Defect defect = new Defect( id , type , locGeo , imgUrl , governorate , city );
+                            list.add(defect);
+                        }
+                        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+                        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                                .findFragmentById(R.id.map);
+                        mapFragment.getMapAsync(AreaDefectsMap.this);
+                    }
+                });
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
+
     }
 
     /**
@@ -92,32 +93,5 @@ public class AreaDefectsMap extends FragmentActivity implements OnMapReadyCallba
             mMap.moveCamera(CameraUpdateFactory.newLatLng(defectLoc));
         }
 
-    }
-    public void fillList(){
-
-        fStore.collection("areas").document(governorate).collection("cities").document(city).collection("defects")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                list.clear();
-                for(DocumentSnapshot snapshot :task.getResult()){
-                    String id = snapshot.getString("id");
-                    String type = snapshot.getString("type");
-                    GeoPoint locGeo = snapshot.getGeoPoint("geoPoint");
-                    String imgUrl =  snapshot.getString("imgUrl");
-                    String governorate =  snapshot.getString("governorate");
-                    String city =  snapshot.getString("city");
-                    Defect defect = new Defect( id , type , locGeo , imgUrl , governorate , city );
-                    list.add(defect);
-                }
-                System.out.println(list.size());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AreaDefectsMap.this,"something went wrong" ,Toast.LENGTH_SHORT).show();
-
-            }
-        });
     }
 }

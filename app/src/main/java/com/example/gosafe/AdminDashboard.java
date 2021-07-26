@@ -31,7 +31,7 @@ public class AdminDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*
+
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +39,7 @@ public class AdminDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-         */
+         
     }
 
 }
