@@ -59,8 +59,6 @@ public class DefectMapsActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        //TextView typeText = findViewById(R.id.typeText);
-       // TextView locationText = findViewById(R.id.locationText);
         ImageView defectImg = findViewById(R.id.imageView);
         String id,type,imageUrl,lat,lng;
         Bundle bundle = getIntent().getExtras();

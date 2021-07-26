@@ -82,12 +82,16 @@ public class Areas extends AppCompatActivity {
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }
-                    else{
+                    else if (getIntent().getStringExtra("from").equals("analysis")){
                         Intent intent = new Intent(Areas.this,Analysis.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }
-
+                    else if(getIntent().getStringExtra("from").equals("map")){
+                        Intent intent = new Intent(Areas.this,AreaDefectsMap.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
 
                 }
 
