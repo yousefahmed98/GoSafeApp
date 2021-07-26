@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GoSafe</string>
     <string name="title_activity_defect_maps">Map</string>
+    <string name="title_activity_area_defects_map">Map</string>
 </resources>

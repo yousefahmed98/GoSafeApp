@@ -17,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoSafe">
-        <activity android:name=".Areas"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -29,7 +28,19 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".AreaDefectsMap"
+            android:label="@string/title_activity_area_defects_map" />
+        <activity android:name=".Analysis" />
+        <activity android:name=".Areas" />
         <activity
             android:name=".DefectMapsActivity"
             android:label="@string/title_activity_defect_maps" />

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blur_background"
+    android:padding="5dp"
+    tools:context=".Areas">
+
+    <LinearLayout
+        android:id="@+id/firstLayout"
+        android:layout_width="394dp"
+        android:layout_height="182dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="6dp">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/go_safe_logo"
+            android:transitionName="logoImageTran"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@id/welcomeText"
+            android:layout_width="216dp"
+            android:layout_height="143dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/bungee_inline"
+            android:padding="5dp"
+            android:text="Analysis"
+            android:textSize="35sp"
+            android:transitionName="welcomeText"
+            app:layout_constraintStart_toEndOf="@+id/logoImage"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/firstLayout"
+       >
+
+        <TextView
+            android:id="@+id/cityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:textSize="30sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numDefectsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Defects"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numPotholeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Potholes"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numAlligatorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Alligators"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numTransverseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Transverses"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+        <TextView
+            android:id="@+id/numLongitudinalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number Of Longitudinal"
+            android:textSize="20sp"
+            android:fontFamily="@font/galada"
+            />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
