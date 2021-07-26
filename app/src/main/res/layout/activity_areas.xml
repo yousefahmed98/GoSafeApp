@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blur_background"
-    tools:context=".Defects">
+    tools:context=".Areas">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/bungee_inline"
-            android:text="detected defects"
+            android:text="Area selection"
             android:textSize="30sp"
             android:transitionName="welcomeText"
             app:layout_constraintStart_toEndOf="@+id/logoImage"
@@ -41,16 +41,18 @@
     </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/ListView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstLayout"
-        app:layout_constraintVertical_bias="0.621"
-        android:onClick="openLoc"/>
+        app:layout_constraintVertical_bias="0.094"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

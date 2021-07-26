@@ -1,17 +1,24 @@
 package com.example.gosafe;
 
+import android.os.Parcel;
+
 import com.google.firebase.firestore.GeoPoint;
 
-public class Defect {
+import java.io.Serializable;
+
+public class Defect implements Serializable {
     String id,type;
     GeoPoint loc;
-    String imageUrl;
+    String imageUrl , city , governorate;
 
-    public Defect(String id, String type, GeoPoint loc,String imageUrl) {
+
+    public Defect(String id, String type, GeoPoint loc,String imageUrl,String governorate, String city) {
         this.id = id;
         this.type = type;
         this.loc = loc;
         this.imageUrl = imageUrl;
+        this.governorate = governorate;
+        this.city = city;
 
     }
 
@@ -49,4 +56,22 @@ public class Defect {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getGovernorate() {
+        return governorate;
+    }
+
+    public void setGovernorate(String governorate) {
+        this.governorate = governorate;
+    }
+
+
 }
